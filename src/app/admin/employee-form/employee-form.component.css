@@ -1,0 +1,77 @@
+label {
+    display: block;
+}
+
+.errorMessage {
+    display: inline-block;
+    margin-left: 20px;
+    margin: 5px;
+}
+
+.errorMessage span {
+    color: red;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.userForm {
+    margin: 20px;
+    text-align: center;
+    background-color: lightblue;
+}
+
+.userForm label {
+    margin: 10px;
+    padding: 5px;
+}
+
+.userForm label input {
+    width: 100%;
+    display: inline;
+    border: 2px solid blue;
+    margin-top: 5px;
+}
+
+.genderForm label input {
+    width: 10%;
+}
+
+.genderForm label {
+    margin: 5px;
+    padding: 2px;
+    display: inline;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-form {
+    width: 45%;
+}
+
+.submitButton {
+    transform: translate(-50%, -50%);
+}
+
+.department-section label {
+    display: block;
+}
+
+::ng-deep ng-select .ng-dropdown-panel {
+    box-sizing: border-box;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    z-index: 1050;
+    -webkit-overflow-scrolling: touch;  
+    background: linear-gradient(15deg, lightblue,white) !important;
+}
+
+.invalid-field {
+    border: 1px solid red;
+    box-shadow: 1px 1px 1px 0.5px red;
+  }
+
+  

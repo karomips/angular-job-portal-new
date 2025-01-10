@@ -1,0 +1,25 @@
+<div class="table-responsive">
+    <table class="table table-striped-columns table-hover table-primary">
+        <thead class="thead-dark p-2 m-2">
+            <th *ngFor = "let header of getTableHeader(employeeDetails[0])" class="p-2 m-2">
+                {{header | uppercase }}
+            </th>
+            <th class="p-2 m-2">ACTIONS</th> 
+        </thead>
+        <tbody class="tbody-dark">
+            <tr *ngFor = "let employee of employeeDetails" class="p-2 m-2">
+                <td *ngFor ="let key of getTableHeader(employee)" class="p-2 m-2">
+                    {{getColumnDetails(employee,key)}}
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm m-1" (click)="editEmployee(employee)">
+                      <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-danger btn-sm m-1" (click)="deleteEmployee(employee)">
+                      <i class="fas fa-trash-alt"></i> Delete
+                    </button>
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

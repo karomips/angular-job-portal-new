@@ -1,0 +1,14 @@
+.admin-navbar{
+    background: linear-gradient(30deg,lightblue,lightgreen,transparent);
+    height: 100vh !important;
+    width: 70%;
+    border: 1px solid blue;
+    box-shadow: 2px 2px 2px 1px blue;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.admin-navbar .nav-link:hover{
+    background: blue;
+    color: white;
+}

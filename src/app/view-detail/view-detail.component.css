@@ -1,0 +1,18 @@
+.highlight{
+    color: blue;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    background-color: lightblue;
+    width: 100% !important;
+    font-weight: bolder;
+    color: green !important;
+    background: linear-gradient(45deg, blue, transparent);
+    transform: translate(-50%,-50%);
+    position: absolute;
+    z-index: 1000000;
+    top: 50%;
+    left: 50%;
+    height: 7vh;
+}

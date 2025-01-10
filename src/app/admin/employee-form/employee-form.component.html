@@ -1,0 +1,231 @@
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()" class="employeeForm m-2 p-2">
+    <div class="form-container">
+        <div class="section-form">
+            <label for="name">
+                Name :
+                <input type="text" formControlName="name" class="form-control m-2 w-100" placeholder="Your name"
+                    [ngClass]="{'invalid-field': employeeForm.get('name')!.invalid && employeeForm.get('name')!.touched}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('name')!.invalid && employeeForm.get('name')!.touched">
+                        *Name must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="dateOfBirth">
+                Date Of Birth :
+                <input matInput [matDatepicker]="picker" [className]="'m-2 w-40'" formControlName="dateOfBirth"
+                    [ngClass]="{'invalid-field': employeeForm.get('dateOfBirth')!.invalid && employeeForm.get('dateOfBirth')!.touched}">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('dateOfBirth')!.invalid && employeeForm.get('dateOfBirth')!.touched">
+                        *Date Of Birth must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="age">
+                Age :
+                <input type="number" min="18" formControlName="age" class="form-control m-2 w-100 d-block"
+                    placeholder="Your Age" readonly [ngClass]="{'invalid-field': employeeForm.get('age')!.invalid}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('age')!.invalid">
+                        *Age must be greater than 18
+                    </span>
+                </div>
+            </label>
+
+            <div class="genderForm">
+                <label for="gender" class="d-inline">
+                    Gender :
+                    <div class="container-fluid">
+                        <input type="radio" class="d-inline" value="Male" formControlName="gender" name="gender"
+                            [ngClass]="{'invalid-field': employeeForm.get('gender')!.invalid && employeeForm.get('gender')!.touched}" />
+                        <label for="Male" class="d-inline">Male</label>
+                        <input type="radio" class="d-inline" value="Female" formControlName="gender" name="gender"
+                            [ngClass]="{'invalid-field': employeeForm.get('gender')!.invalid && employeeForm.get('gender')!.touched}" />
+                        <label for="Female" class="d-inline">Female</label>
+                        <div class="errorMessage">
+                            <span *ngIf="employeeForm.get('gender')!.invalid && employeeForm.get('gender')!.touched">
+                                *Please select gender
+                            </span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+
+            <label for="department">
+                Department :
+                <select id="department" formControlName="department" class="form-control"
+                    [ngClass]="{'invalid-field': employeeForm.get('department')!.invalid && employeeForm.get('department')!.touched}">
+                    <option value="" disabled selected>Select a Department</option>
+                    <option *ngFor="let department of departments" value="{{ department }}">
+                        {{ department }}
+                    </option>
+                </select>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('department')!.invalid && employeeForm.get('department')!.touched">
+                        *Please select Department
+                    </span>
+                </div>
+            </label>
+
+            <label for="email">
+                Email :
+                <input type="email" formControlName="email" class="form-control m-2 w-100" placeholder="Your Email"
+                    [ngClass]="{'invalid-field': employeeForm.get('email')!.invalid && employeeForm.get('email')!.touched}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('email')!.invalid && employeeForm.get('email')!.touched">
+                        *Email must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="phone">
+                Phone Number :
+                <input type="text" formControlName="phoneNumber" placeholder="Your phoneNumber"
+                    class="form-control w-100 m-2"
+                    [ngClass]="{'invalid-field': employeeForm.get('phoneNumber')!.invalid && employeeForm.get('phoneNumber')!.touched}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('phoneNumber')!.invalid && employeeForm.get('phoneNumber')!.touched">
+                        *Phone Number must be valid
+                    </span>
+                </div>
+            </label>
+
+            <div class="genderForm">
+                <label for="isManager" class="d-inline">
+                    Is Manager :
+                    <input type="checkbox" class="d-inline" value="true" formControlName="isManager" name="isManager"
+                        [ngClass]="{'invalid-field': employeeForm.get('isManager')!.invalid && employeeForm.get('isManager')!.touched}" />
+                    <label for="isManager" class="d-inline">Manager</label>
+                </label>
+            </div>
+
+            <label for="previousExperience">
+                Previous Experience :
+                <input type="number" min="0" formControlName="previousExperience" placeholder="Your previousExperience"
+                    class="form-control w-100 m-2"
+                    [ngClass]="{'invalid-field': employeeForm.get('previousExperience')!.invalid && employeeForm.get('previousExperience')!.touched}" />
+                <div class="errorMessage">
+                    <span
+                        *ngIf="employeeForm.get('previousExperience')!.invalid && employeeForm.get('previousExperience')!.touched">
+                        *Previous Experience must be valid
+                    </span>
+                </div>
+            </label>
+        </div>
+
+        <div class="section-form">
+
+            <label for="country">
+                Country :
+                <ng-select id="country" formControlName="country" bindLabel="name" bindValue="name"
+                    [items]="countryList" class="form-control custom-ng-select" theme="material"
+                    [ngClass]="{'invalid-field': employeeForm.get('country')!.invalid && employeeForm.get('country')!.touched}"
+                    (change)="getCountry()">
+                </ng-select>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('country')!.invalid && employeeForm.get('country')!.touched">
+                        *Country must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="state">
+                State :
+                <ng-select id="state" formControlName="state" bindLabel="name" bindValue="name" [items]="stateList"
+                    class="form-control custom-ng-select" theme="material"
+                    [ngClass]="{'invalid-field': employeeForm.get('state')!.invalid && employeeForm.get('state')!.touched}">
+                </ng-select>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('state')!.invalid && employeeForm.get('state')!.touched">
+                        *State must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="city">
+                City :
+                <input type="text" formControlName="city" placeholder="Your City" class="form-control w-100 m-2"
+                    [ngClass]="{'invalid-field': employeeForm.get('city')!.invalid && employeeForm.get('city')!.touched}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('city')!.invalid && employeeForm.get('city')!.touched">
+                        *City must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="salary">
+                Salary :
+                <input type="number" min="0" formControlName="salary" placeholder="Your salary"
+                    class="form-control w-100 m-2"
+                    [ngClass]="{'invalid-field': employeeForm.get('salary')!.invalid && employeeForm.get('salary')!.touched}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('salary')!.invalid && employeeForm.get('salary')!.touched">
+                        *Salary must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="role">
+                Role :
+                <select id="role" formControlName="role" class="form-control"
+                    [ngClass]="{'invalid-field': employeeForm.get('role')!.invalid && employeeForm.get('role')!.touched}">
+                    <option value="" disabled selected>Select a role</option>
+                    <option *ngFor="let role of role" value="{{ role }}">
+                        {{ role }}
+                    </option>
+                </select>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('role')!.invalid && employeeForm.get('role')!.touched">
+                        *Please select Role
+                    </span>
+                </div>
+            </label>
+
+            <label for="reportingTo">
+                Reporting To :
+                <select id="reportingTo" formControlName="reportingTo" class="form-control"
+                    [ngClass]="{'invalid-field': employeeForm.get('reportingTo')!.invalid && employeeForm.get('reportingTo')!.touched}">
+                    <option value="" disabled selected>Select a role</option>
+                    <option *ngFor="let data of isManager" value="{{ data.manager_id }}">
+                        {{ data && data.manager_id }}
+                    </option>
+                </select>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('reportingTo')!.invalid && employeeForm.get('reportingTo')!.touched">
+                        *Please select Reporting To
+                    </span>
+                </div>
+            </label>
+
+            <label for="dateOfJoin">
+                Date Of Join :
+                <input type="date" formControlName="dateOfJoin" class="form-control w-100 m-2"
+                    [ngClass]="{'invalid-field': employeeForm.get('dateOfJoin')!.invalid && employeeForm.get('dateOfJoin')!.touched}" />
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('dateOfJoin')!.invalid && employeeForm.get('dateOfJoin')!.touched">
+                        *Date of Join must be valid
+                    </span>
+                </div>
+            </label>
+
+            <label for="address">
+                Address :
+                <textarea id="address" formControlName="address" class="form-control w-100 m-2" cols="50" rows="2"
+                    [ngClass]="{'invalid-field': employeeForm.get('address')!.invalid && employeeForm.get('address')!.touched}"></textarea>
+                <div class="errorMessage">
+                    <span *ngIf="employeeForm.get('address')!.invalid && employeeForm.get('address')!.touched">
+                        *Address must be valid
+                    </span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-success">
+        Submit
+    </button>
+</form>

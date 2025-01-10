@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="container-fluid" *ngIf="task && task.name.length>0 else noTask">
+        <h1 class="text-success">
+            {{task.name}}
+        </h1>
+        <p>
+            You have this task <em>{{task.name}}</em> on your board. Please complete it
+            <br>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero in quam ea, deserunt dolore mollitia magni
+            quisquam qui consectetur est labore obcaecati praesentium. Ullam ducimus fugit dignissimos impedit in
+            laudantium.
+            <br>     
+        </p>
+        <h6 class="text-primary">
+            Created Date : {{task.createdAt}}
+        </h6>
+        <h6 class="text-warning">
+            Updated Date : {{task.updatedAt}}
+        </h6>
+    </div>
+    <ng-template #noTask>
+        <div appHighlight [customStyleClass]="customStyleClass"  class="container-fluid">
+            <h1>No Tasks</h1>
+        </div>
+    </ng-template>
+</div>
