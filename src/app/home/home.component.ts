@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  title = 'EKart'
+  title = 'Mangan-Vaca Job Listing'
   ngOnInit(): void {
     
   }

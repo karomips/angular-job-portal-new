@@ -5,12 +5,12 @@ import { EmployeeService } from '../../employee-service.service';
 import { Router } from '@angular/router';
 import { CountryService } from '../../utils/country.service';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import {provideNativeDateAdapter} from '@angular/material/core';
 
 @Component({
   selector: 'app-employee-form',
-  imports: [ReactiveFormsModule, CommonModule, NgSelectModule,MatDatepickerModule,MatCalendar],
+  imports: [ReactiveFormsModule, CommonModule, NgSelectModule,MatDatepickerModule],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.css',
   providers: [
