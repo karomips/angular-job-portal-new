@@ -106,7 +106,7 @@ export class EmployeeFormComponent implements OnInit {
     if (age < 18) {
       this.employeeForm.get('age')!.setValidators(Validators.min(18));
     }
-    this.employeeService.getManager().subscribe({
+    this.employeeService.getManagers().subscribe({
       next: (data: any) => {
         this.isManager = data.filter((data: any) => data.isManager).map((data: any) => {
           return { manager_id: data.id, name: data.name };

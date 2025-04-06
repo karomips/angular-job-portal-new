@@ -1,8 +1,16 @@
 <div class="myNavBar" id="myNav">
-    <nav>
-        <a routerLink="/" class="nav-link" routerLinkActive='active' [routerLinkActiveOptions]="{exact:true}">Home</a>
-        <a routerLink="/admin" class="nav-link" routerLinkActive='active'>Admin</a>
-        <a routerLink="/login" class="nav-link" routerLinkActive='active'>Login</a>
-        <h6>{{userName}}</h6>
+    <nav style="display: flex; align-items: center; justify-content: space-between;">
+      <!-- Left side: Sign Out -->
+      <div>
+        <a routerLink="/login" class="nav-link">Sign Out</a>
+      </div>
+  
+      <!-- Right side: Navigation Links and Username -->
+      <div style="display: flex; align-items: center; gap: 20px;">
+        <a routerLink="/" class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/job-list" class="nav-link" routerLinkActive="active">Job List</a>
+        <h6 style="margin: 0;">{{ userName }}</h6>
+      </div>
     </nav>
-</div>
+  </div>
+  

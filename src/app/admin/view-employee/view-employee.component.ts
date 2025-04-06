@@ -16,7 +16,7 @@ export class ViewEmployeeComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.employeeService.getManager().subscribe({
+    this.employeeService.getManagers().subscribe({
       next: (manager) => {
         this.employeeDetails = manager.map(e => {
           return {
@@ -37,7 +37,7 @@ export class ViewEmployeeComponent implements OnInit {
         })
         console.log('Manager:', manager);
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Error:', error);
       }
     })

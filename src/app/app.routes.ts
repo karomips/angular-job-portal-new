@@ -7,36 +7,21 @@ import { ViewDetailComponent } from './view-detail/view-detail.component';
 import { AdminComponent } from './admin/admin.component';
 import { EmployeeFormComponent } from './admin/employee-form/employee-form.component';
 import { ViewEmployeeComponent } from './admin/view-employee/view-employee.component';
+import { JobListComponent } from './job-list/job-list.component';
 
-export const routes: Routes = [{
-    path: '',
-    component: HomeComponent,
-    pathMatch:'full'
-  },{
-    path: 'login',
-    component: AuthComponent,
-     pathMatch:'full'
-  },{
-    path:'admin',
-    component:AdminComponent,
-    canActivate:[AuthGuard],
-    children:[
-      {
-        path:'employee-form',
-        component:EmployeeFormComponent,
-        pathMatch:'full'
-      },{
-        path:'view-employee',
-        component:ViewEmployeeComponent,
-        pathMatch:'full'
-      }
+export const routes: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  { path: 'job-list', component: JobListComponent },
+  { path: 'login', component: AuthComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'employee-form', component: EmployeeFormComponent },
+      { path: 'view-employee', component: ViewEmployeeComponent }
     ]
-  },{
-    path:'my-profile/:id',
-    component:ViewDetailComponent,
-     pathMatch:'full'
-  },{
-    path: '**',
-    component: PageNotFoundComponent
-  }
+  },
+  { path: 'my-profile/:id', component: ViewDetailComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
